@@ -17,8 +17,9 @@ function computerPlay() {
 }
 
 // The parameters that function playRound() takes
-const playerSelection=upper("paper")
-const computerSelection=computerPlay();
+let playerSelection=upper(prompt("Pick a move: "));
+let computerSelection=computerPlay();
+
 //This function takes a string and returns the first letter capitalized
 function upper(player) {
     let lower=player.toLowerCase();
@@ -27,9 +28,6 @@ function upper(player) {
     let final=lower.replace(first, upper);
     return final;
 }
-//Logging the selections from the player and computer
-console.log("Player: "+playerSelection);
-console.log("Computer: "+computerSelection);
 
 
 //This function takes inputs and plays a single round
@@ -46,13 +44,13 @@ function playRound(playerSelection,computerSelection) {
         return string;
     }
     else if (playerSelection==="Rock" && computerSelection==="Rock") {
-        string="Tie! Play again";
+        string="Tie! Rock: Play again";
         return string;
     }
 
     //Section if player chooses paper
     else if (playerSelection==="Paper" && computerSelection==="Paper") {
-        string="Tie! Play again";
+        string="Tie! Paper: Play again";
         return string;
     }
     else if (playerSelection==="Paper" && computerSelection==="Scissors") {
@@ -70,7 +68,7 @@ function playRound(playerSelection,computerSelection) {
         return string;
     }
     else if (playerSelection==="Scissors" && computerSelection==="Scissors") {
-        string="Tie! Play again";
+        string="Tie! Scissors: Play again";
         return string;
     }
     else {
@@ -78,5 +76,20 @@ function playRound(playerSelection,computerSelection) {
         return string;
     }
 }
-playRound(playerSelection, computerSelection);
 
+
+//This function will take the playRound function and run it five times
+function game() {
+    for (let i=0; i<5; i++) {
+
+        //Logging the selections from the player and computer
+        playerSelection=upper(prompt("Pick a move: "));
+        console.log("Player: "+playerSelection);
+        computerSelection=computerPlay();
+        console.log("Computer: "+computerSelection);
+
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+//Calls the game() function to play 5 games
+game()
