@@ -93,14 +93,25 @@ function playRound(playerSelection, computerSelection) {
 //Calls the game() function to play 5 games
 //game()
 
-
-// The parameters that function playRound() takes
-let playerSelection = 'Rock';
-let computerSelection = computerPlay();
-
-
-//Event listeners for buttons
+//adding buttons as elements
 
 const btn1 = document.querySelector('#rock');
-btn1.addEventListener('click', console.log(playRound(playerSelection, computerSelection)));
-console.log(btn1);
+const btn2 = document.querySelector('#paper');
+const btn3 = document.querySelector('#scissors');
+
+// The parameters that function playRound() takes
+let playerSelection = btn2.innerHTML;
+let computerSelection = computerPlay();
+
+//Event listeners for buttons
+btn1.addEventListener('click', () => {
+    alert(playRound(playerSelection, computerSelection));
+});
+
+btn2.addEventListener('click', () => {
+    alert(playRound(playerSelection, computerSelection));
+});
+
+btn3.addEventListener('click', () => {
+    alert(playRound(playerSelection, computerSelection));
+});
