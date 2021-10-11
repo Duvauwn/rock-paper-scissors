@@ -65,6 +65,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //adding buttons as a nodelist
+let playerScore = 0;
+let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -83,27 +85,30 @@ buttons.forEach((button) => {
         //Scores
         const scores = document.querySelector('#scores');
         const score = document.createElement('p');
+
+
+
         //Testing
-        let win = 'You win!'
-        let lose = 'You Lose!'
-        let tie = 'Tie!'
+        let win = new RegExp('You Win!');
+        let lose = new RegExp('You Lose!');
+        let tie = new RegExp('Tie!');
         if (win.test(string) == true) {
-            console.log('test pass')
+            playerScore += 1;
+            console.log(playerScore);
+            return playerScore;
         }
-        else if (document.getElementById('content').innerHTML == lose) {
-            console.log('test passes as well')
-        }
-        else if (document.getElementById('content').innerHTML == tie) {
-            console.log('third test pass')
-        }
-        else {
-            console.log('failure');
+        else if (lose.test(string) == true) {
+            computerScore += 1;
+            console.log(computerScore);
+            return computerScore;
         }
 
         score.classList.add('score');
-        score.textContent = 'Player: ' + ' Computer: ';
+        score.textContent = 'Player: ' + playerScore + 'Computer: ' + computerScore;
 
         scores.appendChild(score);
+
+
     })
 
 })
