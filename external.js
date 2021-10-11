@@ -72,26 +72,38 @@ buttons.forEach((button) => {
     let computerSelection = computerPlay();
 
     button.addEventListener('click', () => {
+        //Results
         const results = document.querySelector('#results');
-        const content = document.createElement('p');
-        content.classList.add('content');
-        content.textContent = playRound(playerSelection, computerSelection);
+        const result = document.createElement('p');
 
-        results.appendChild(content);
+        result.classList.add('result');
+        result.textContent = playRound(playerSelection, computerSelection);
+
+        results.appendChild(result);
+        //Scores
+        const scores = document.querySelector('#scores');
+        const score = document.createElement('p');
+        //Testing
+        let win = 'You win!'
+        let lose = 'You Lose!'
+        let tie = 'Tie!'
+        if (win.test(string) == true) {
+            console.log('test pass')
+        }
+        else if (document.getElementById('content').innerHTML == lose) {
+            console.log('test passes as well')
+        }
+        else if (document.getElementById('content').innerHTML == tie) {
+            console.log('third test pass')
+        }
+        else {
+            console.log('failure');
+        }
+
+        score.classList.add('score');
+        score.textContent = 'Player: ' + ' Computer: ';
+
+        scores.appendChild(score);
     })
 
-})
-
-const score = document.querySelectorAll('p');
-score.forEach((p) => {
-    if (string.charAt(4) == "W") {
-        let playerScore = 0;
-        playerScore += 1;
-        return playerScore;
-    }
-    else if (string.charAt(4) == "L") {
-        let computerScore = 0;
-        computerScore += 1;
-        return computerScore;
-    }
 })
