@@ -17,20 +17,9 @@ function computerPlay() {
 }
 
 
-
-//This function takes a string and returns the first letter capitalized
-function upper(player) {
-    let lower = player.toLowerCase();
-    let first = lower.charAt(0);
-    let upper = first.toUpperCase();
-    let final = lower.replace(first, upper);
-    return final;
-}
-
-
+let string;
 //This function takes inputs and plays a single round
 function playRound(playerSelection, computerSelection) {
-    let string;
 
     //Section if player chooses rock
     if (playerSelection === "Rock" && computerSelection === "Paper") {
@@ -75,43 +64,34 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//adding buttons as a nodelist
 
-//This function will take the playRound function and run it five times
-//function game() {
-//    for (let i=0; i<5; i++) {
-//
-//        //Logging the selections from the player and computer
-//        playerSelection=upper(prompt("Pick a move: "));
-//        console.log("Player: "+playerSelection);
-//        computerSelection=computerPlay();
-//        console.log("Computer: "+computerSelection);
-//
-//        console.log(playRound(playerSelection, computerSelection));
-//    }
-//}
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    let playerSelection = button.innerHTML;
+    let computerSelection = computerPlay();
 
-//Calls the game() function to play 5 games
-//game()
+    button.addEventListener('click', () => {
+        const results = document.querySelector('#results');
+        const content = document.createElement('p');
+        content.classList.add('content');
+        content.textContent = playRound(playerSelection, computerSelection);
 
-//adding buttons as elements
+        results.appendChild(content);
+    })
 
-const btn1 = document.querySelector('#rock');
-const btn2 = document.querySelector('#paper');
-const btn3 = document.querySelector('#scissors');
+})
 
-// The parameters that function playRound() takes
-let playerSelection = btn2.innerHTML;
-let computerSelection = computerPlay();
-
-//Event listeners for buttons
-btn1.addEventListener('click', () => {
-    alert(playRound(playerSelection, computerSelection));
-});
-
-btn2.addEventListener('click', () => {
-    alert(playRound(playerSelection, computerSelection));
-});
-
-btn3.addEventListener('click', () => {
-    alert(playRound(playerSelection, computerSelection));
-});
+const score = document.querySelectorAll('p');
+score.forEach((p) => {
+    if (string.charAt(4) == "W") {
+        let playerScore = 0;
+        playerScore += 1;
+        return playerScore;
+    }
+    else if (string.charAt(4) == "L") {
+        let computerScore = 0;
+        computerScore += 1;
+        return computerScore;
+    }
+})
